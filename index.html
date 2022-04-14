@@ -1,0 +1,2303 @@
+<!doctype html>
+<html 
+      lang="en"
+      dir="ltr">
+  <head>
+    <meta name="google-signin-client-id" content="721724668570-nbkv1cfusk7kk4eni4pjvepaus73b13t.apps.googleusercontent.com">
+    <meta name="google-signin-scope"
+          content="profile email">
+    <meta property="og:site_name" content="Google Developers">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#009688"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="/_pwa/developers/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="//www.gstatic.cn" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="//apis.google.com" crossorigin>
+    <link rel="preconnect" href="//www.google-analytics.com" crossorigin><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Material+Icons&display=block"><link rel="stylesheet" href="https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/css/app.css">
+      <link rel="shortcut icon" href="https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/images/touchicon-180.png"><link rel="canonical" href="https://developers.google.cn/identity/smartlock-passwords/android/associate-apps-and-sites">
+      
+
+<title>Enable automatic sign-in across apps and websites &nbsp;|&nbsp; Smart Lock for Passwords on Android &nbsp;|&nbsp; Google Developers</title>
+
+<meta property="og:title" content="Enable automatic sign-in across apps and websites &nbsp;|&nbsp; Smart Lock for Passwords on Android &nbsp;|&nbsp; Google Developers"><meta property="og:url" content="https://developers.google.cn/identity/smartlock-passwords/android/associate-apps-and-sites"><meta property="og:image" content="https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/images/opengraph/teal.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675"><meta property="og:locale" content="en"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Google Identity",
+      "item": "https://developers.google.cn/identity"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Smart Lock for Passwords on Android",
+      "item": "https://developers.google.cn/identity/smartlock-passwords/android"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Enable automatic sign-in across apps and websites",
+      "item": "https://developers.google.cn/identity/smartlock-passwords/android/associate-apps-and-sites"
+    }]
+  }
+  </script>
+  
+
+  
+
+  
+
+
+    </head>
+  <body class=""
+        template="page"
+        theme="teal"
+        type="article"
+        
+        
+        layout="docs"
+        block-apix
+        
+        pending>
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+  
+    <section class="devsite-wrapper"><devsite-header>
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner nocontent">
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Open menu">
+        </button>
+        <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+
+
+
+  
+  
+  <span class="devsite-product-name">
+    <ul class="devsite-breadcrumb-list"
+  
+    aria-label="Product breadcrumb">
+  
+  <li class="devsite-breadcrumb-item
+             devsite-has-google-wordmark">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.cn/identity"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Google Identity"
+      
+    >
+    
+          <svg class="devsite-google-wordmark"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 148 48">
+    <title>Google</title>
+    <path class="devsite-google-wordmark-svg-path" d="M19.58,37.65c-9.87,0-18.17-8.04-18.17-17.91c0-9.87,8.3-17.91,18.17-17.91c5.46,0,9.35,2.14,12.27,4.94l-3.45,3.45c-2.1-1.97-4.93-3.49-8.82-3.49c-7.21,0-12.84,5.81-12.84,13.02c0,7.21,5.64,13.02,12.84,13.02c4.67,0,7.34-1.88,9.04-3.58c1.4-1.4,2.32-3.41,2.66-6.16H19.58v-4.89h16.47c0.18,0.87,0.26,1.92,0.26,3.06c0,3.67-1.01,8.21-4.24,11.44C28.93,35.9,24.91,37.65,19.58,37.65z M61.78,26.12c0,6.64-5.1,11.53-11.36,11.53s-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53S61.78,19.43,61.78,26.12z M56.8,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C53.84,33.11,56.8,30.22,56.8,26.12z M87.25,26.12c0,6.64-5.1,11.53-11.36,11.53c-6.26,0-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53C82.15,14.59,87.25,19.43,87.25,26.12zM82.28,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C79.32,33.11,82.28,30.22,82.28,26.12z M112.09,15.29v20.7c0,8.52-5.02,12.01-10.96,12.01c-5.59,0-8.95-3.76-10.22-6.81l4.41-1.83c0.79,1.88,2.71,4.1,5.81,4.1c3.8,0,6.16-2.36,6.16-6.77v-1.66h-0.18c-1.14,1.4-3.32,2.62-6.07,2.62c-5.76,0-11.05-5.02-11.05-11.49c0-6.51,5.28-11.57,11.05-11.57c2.75,0,4.93,1.22,6.07,2.58h0.18v-1.88H112.09z M107.64,26.16c0-4.06-2.71-7.03-6.16-7.03c-3.49,0-6.42,2.97-6.42,7.03c0,4.02,2.93,6.94,6.42,6.94C104.93,33.11,107.64,30.18,107.64,26.16z M120.97,3.06v33.89h-5.07V3.06H120.97z M140.89,29.92l3.93,2.62c-1.27,1.88-4.32,5.11-9.61,5.11c-6.55,0-11.28-5.07-11.28-11.53c0-6.86,4.77-11.53,10.71-11.53c5.98,0,8.91,4.76,9.87,7.34l0.52,1.31l-15.42,6.38c1.18,2.31,3.01,3.49,5.59,3.49C137.79,33.11,139.58,31.84,140.89,29.92zM128.79,25.77l10.31-4.28c-0.57-1.44-2.27-2.45-4.28-2.45C132.24,19.04,128.66,21.31,128.79,25.77z"/>
+  </svg>Identity
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.cn/identity/smartlock-passwords/android"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="2"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="2"
+      
+        track-metadata-eventdetail="Smart Lock for Passwords on Android"
+      
+    >
+    
+        Smart Lock for Passwords on Android
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+  </span>
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+           </div>
+          
+<devsite-search
+    aria-expanded="false"
+    aria-haspopup="listbox"
+    
+    
+    enable-suggestions
+      
+    
+    project-name="Smart Lock for Passwords on Android"
+    tenant-name="Google Developers"
+    
+    
+    
+    
+    
+    
+    role="combobox">
+  <form class="devsite-search-form" action="https://developers.google.cn/s/results" method="GET">
+    <div class="devsite-search-container">
+      <div class="devsite-searchbox">
+        <input
+          aria-activedescendant=""
+          aria-autocomplete="list"
+          
+          aria-label="Search"
+          aria-haspopup="false"
+          aria-multiline="false"
+          aria-label="Search box"
+          autocomplete="off"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          
+          placeholder="Search"
+          role="searchbox"
+          type="text"
+          value=""
+          >
+        <div class="devsite-search-image material-icons" aria-hidden="true"></div>
+      </div>
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              
+              aria-label="Open search"></button>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          
+          aria-label="Close search"></button>
+</devsite-search>
+
+        </div>
+
+        
+
+        
+
+        
+<devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    
+    <select aria-label="Select your language preference."
+            class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+    
+      
+      <option>Language</option>
+    
+    
+      <option value="en"
+              lang="en"
+            >
+        English
+      </option>
+    
+      <option value="id"
+              lang="id"
+            >
+        Bahasa Indonesia
+      </option>
+    
+      <option value="de"
+              lang="de"
+            >
+        Deutsch
+      </option>
+    
+      <option value="es"
+              lang="es"
+            >
+        Español
+      </option>
+    
+      <option value="es_419"
+              lang="es_419"
+            >
+        Español – América Latina
+      </option>
+    
+      <option value="fr"
+              lang="fr"
+            >
+        Français
+      </option>
+    
+      <option value="it"
+              lang="it"
+            >
+        Italiano
+      </option>
+    
+      <option value="pl"
+              lang="pl"
+            >
+        Polski
+      </option>
+    
+      <option value="pt_br"
+              lang="pt_br"
+            >
+        Português – Brasil
+      </option>
+    
+      <option value="vi"
+              lang="vi"
+            >
+        Tiếng Việt
+      </option>
+    
+      <option value="tr"
+              lang="tr"
+            >
+        Türkçe
+      </option>
+    
+      <option value="ru"
+              lang="ru"
+            >
+        Русский
+      </option>
+    
+      <option value="he"
+              lang="he"
+            >
+        עברית
+      </option>
+    
+      <option value="ar"
+              lang="ar"
+            >
+        العربيّة
+      </option>
+    
+      <option value="fa"
+              lang="fa"
+            >
+        فارسی
+      </option>
+    
+      <option value="hi"
+              lang="hi"
+            >
+        हिंदी
+      </option>
+    
+      <option value="bn"
+              lang="bn"
+            >
+        বাংলা
+      </option>
+    
+      <option value="th"
+              lang="th"
+            >
+        ภาษาไทย
+      </option>
+    
+      <option value="zh_cn"
+              lang="zh_cn"
+            >
+        中文 – 简体
+      </option>
+    
+      <option value="zh_tw"
+              lang="zh_tw"
+            >
+        中文 – 繁體
+      </option>
+    
+      <option value="ja"
+              lang="ja"
+            >
+        日本語
+      </option>
+    
+      <option value="ko"
+              lang="ko"
+            >
+        한국어
+      </option>
+    
+    </select>
+  </devsite-select>
+</devsite-language-selector>
+
+
+        
+
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="devsite-collapsible-section
+    ">
+    <div class="devsite-header-background">
+      
+        
+      
+      
+        <div class="devsite-doc-set-nav-row">
+          
+          
+            
+            
+  <devsite-tabs class="lower-tabs">
+
+    <nav class="devsite-tabs-wrapper" aria-label="Lower tabs">
+      
+        
+          <tab  >
+            <a href="https://developers.google.cn/identity/smartlock-passwords/android"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.cn/identity/smartlock-passwords/android"
+   track-metadata-position="nav - home"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Home"
+    
+      track-name="home"
+    
+  >
+  Home
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  active>
+            <a href="https://developers.google.cn/identity/smartlock-passwords/android/overview"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.cn/identity/smartlock-passwords/android/overview"
+   track-metadata-position="nav - guides"
+   track-metadata-module="primary nav"
+   aria-label="Guides, selected" 
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Guides"
+    
+      track-name="guides"
+    
+  >
+  Guides
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  >
+            <a href="https://developers.google.cn/android/reference/com/google/android/gms/auth/api/credentials/package-summary"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.cn/android/reference/com/google/android/gms/auth/api/credentials/package-summary"
+   track-metadata-position="nav - reference"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Reference"
+    
+      track-name="reference"
+    
+  >
+  Reference
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  >
+            <a href="https://github.com/googlesamples/android-credentials/"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://github.com/googlesamples/android-credentials/"
+   track-metadata-position="nav - samples"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Samples"
+    
+      track-name="samples"
+    
+  >
+  Samples
+</a>
+
+          </tab>
+        
+      
+        
+          <tab  >
+            <a href="https://developers.google.cn/identity/smartlock-passwords/android/case-studies"
+   class="gc-analytics-event "
+   track-type="nav"
+   track-metadata-eventdetail="https://developers.google.cn/identity/smartlock-passwords/android/case-studies"
+   track-metadata-position="nav - case studies"
+   track-metadata-module="primary nav"
+   
+   
+    
+      data-category="Site-Wide Custom Events"
+    
+      data-label="Tab: Case Studies"
+    
+      track-name="case studies"
+    
+  >
+  Case Studies
+</a>
+
+          </tab>
+        
+      
+    </nav>
+
+  </devsite-tabs>
+
+          
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+  
+</devsite-header>
+      <devsite-book-nav scrollbars >
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter
+            ">
+  <input type="text"
+         placeholder="Filter"
+         
+         aria-label="Type to filter"
+         role="searchbox">
+  
+  <span class="filter-clear-button hidden"
+        data-title="Clear filter"
+        aria-label="Clear filter"
+        role="button"
+        tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent"
+     aria-label="Side menu">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  
+    
+  
+
+
+  
+      <span class="devsite-product-name">
+        
+        
+        <ul class="devsite-breadcrumb-list"
+  
+    aria-label="Upper header breadcrumb">
+  
+  <li class="devsite-breadcrumb-item
+             devsite-has-google-wordmark">
+    
+    
+    
+      
+      
+        
+  <a href="https://developers.google.cn/identity"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail="Google Identity"
+      
+    >
+    
+          <svg class="devsite-google-wordmark"
+       xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 148 48">
+    <title>Google</title>
+    <path class="devsite-google-wordmark-svg-path" d="M19.58,37.65c-9.87,0-18.17-8.04-18.17-17.91c0-9.87,8.3-17.91,18.17-17.91c5.46,0,9.35,2.14,12.27,4.94l-3.45,3.45c-2.1-1.97-4.93-3.49-8.82-3.49c-7.21,0-12.84,5.81-12.84,13.02c0,7.21,5.64,13.02,12.84,13.02c4.67,0,7.34-1.88,9.04-3.58c1.4-1.4,2.32-3.41,2.66-6.16H19.58v-4.89h16.47c0.18,0.87,0.26,1.92,0.26,3.06c0,3.67-1.01,8.21-4.24,11.44C28.93,35.9,24.91,37.65,19.58,37.65z M61.78,26.12c0,6.64-5.1,11.53-11.36,11.53s-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53S61.78,19.43,61.78,26.12z M56.8,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C53.84,33.11,56.8,30.22,56.8,26.12z M87.25,26.12c0,6.64-5.1,11.53-11.36,11.53c-6.26,0-11.36-4.89-11.36-11.53c0-6.68,5.1-11.53,11.36-11.53C82.15,14.59,87.25,19.43,87.25,26.12zM82.28,26.12c0-4.15-2.96-6.99-6.39-6.99c-3.43,0-6.39,2.84-6.39,6.99c0,4.11,2.96,6.99,6.39,6.99C79.32,33.11,82.28,30.22,82.28,26.12z M112.09,15.29v20.7c0,8.52-5.02,12.01-10.96,12.01c-5.59,0-8.95-3.76-10.22-6.81l4.41-1.83c0.79,1.88,2.71,4.1,5.81,4.1c3.8,0,6.16-2.36,6.16-6.77v-1.66h-0.18c-1.14,1.4-3.32,2.62-6.07,2.62c-5.76,0-11.05-5.02-11.05-11.49c0-6.51,5.28-11.57,11.05-11.57c2.75,0,4.93,1.22,6.07,2.58h0.18v-1.88H112.09z M107.64,26.16c0-4.06-2.71-7.03-6.16-7.03c-3.49,0-6.42,2.97-6.42,7.03c0,4.02,2.93,6.94,6.42,6.94C104.93,33.11,107.64,30.18,107.64,26.16z M120.97,3.06v33.89h-5.07V3.06H120.97z M140.89,29.92l3.93,2.62c-1.27,1.88-4.32,5.11-9.61,5.11c-6.55,0-11.28-5.07-11.28-11.53c0-6.86,4.77-11.53,10.71-11.53c5.98,0,8.91,4.76,9.87,7.34l0.52,1.31l-15.42,6.38c1.18,2.31,3.01,3.49,5.59,3.49C137.79,33.11,139.58,31.84,140.89,29.92zM128.79,25.77l10.31-4.28c-0.57-1.44-2.27-2.45-4.28-2.45C132.24,19.04,128.66,21.31,128.79,25.77z"/>
+  </svg>Identity
+        
+  </a>
+  
+      
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.cn/identity/smartlock-passwords/android"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Upper Header"
+      
+        data-value="2"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="2"
+      
+        track-metadata-eventdetail="Smart Lock for Passwords on Android"
+      
+    >
+    
+        Smart Lock for Passwords on Android
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+      </span>
+    
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/identity/smartlock-passwords/android"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Home"
+      
+        track-name="home"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Home"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Home
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/identity/smartlock-passwords/android/overview"
+    
+       class="devsite-nav-title gc-analytics-event
+              devsite-nav-has-children
+              devsite-nav-active"
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Guides"
+      
+        track-name="guides"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Guides"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Guides
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          >
+    </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/android/reference/com/google/android/gms/auth/api/credentials/package-summary"
+    
+       class="devsite-nav-title gc-analytics-event
+              devsite-nav-has-children
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Reference"
+      
+        track-name="reference"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Reference"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Reference
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          >
+    </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="https://github.com/googlesamples/android-credentials/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Samples"
+      
+        track-name="samples"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Samples"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Samples
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+            
+<li class="devsite-nav-item">
+
+  
+  <a href="/identity/smartlock-passwords/android/case-studies"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Case Studies"
+      
+        track-name="case studies"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Case Studies"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Case Studies
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+          
+          
+          
+        </ul>
+      
+    </div>
+    
+      <div class="devsite-mobile-nav-bottom" role="navigation">
+        
+          
+          <ul class="devsite-nav-list" menu="_book">
+            <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/overview"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Overview</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/get-started"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Get Started</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/retrieve-credentials"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Retrieve Credentials</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/retrieve-hints"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Retrieve Sign-In Hints</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/store-credentials"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Store Credentials</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/delete-credentials"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Delete Stored Credentials</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/associate-apps-and-sites"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Share Credentials with Apps and Sites</span></a></li>
+
+  <li class="devsite-nav-item"><a href="/identity/smartlock-passwords/android/idtoken-auth"
+        class="devsite-nav-title"
+      ><span class="devsite-nav-text" tooltip>Sign In Using ID Tokens</span></a></li>
+          </ul>
+        
+        
+        
+          
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+        
+      </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav>
+      <section id="gc-wrapper">
+        <main role="main" class="devsite-main-content"
+            has-book-nav
+            has-sidebar>
+          
+          <div class="devsite-sidebar">
+            <div class="devsite-sidebar-content">
+              <devsite-toc class="devsite-nav"
+                           role="navigation"
+                           aria-label="On this page"
+                           depth="2"
+                           scrollbars
+                ></devsite-toc>
+              <devsite-recommendations-sidebar class="nocontent devsite-nav">
+              </devsite-recommendations-sidebar>
+            </div>
+          </div>
+          
+          <devsite-content >
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article">
+  
+  
+    <div class="devsite-banner devsite-banner-announcement"
+         
+    background="google-yellow"
+  >
+      <div class="devsite-banner-message">
+        <div class="devsite-banner-message-text">
+          If One Tap sign-in meets your needs, consider using it instead. One Tap has an updated user experience and other improvements.
+        </div>
+      </div>
+    </div>
+  
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list"
+  
+    aria-label="Breadcrumb">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+  <a href="https://developers.google.cn/"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+        Home
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.cn/products"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="2"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="2"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+        Products
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.cn/identity"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="3"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="3"
+      
+        track-metadata-eventdetail="Google Identity"
+      
+    >
+    
+        Google Identity
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.cn/identity/smartlock-passwords/android"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="4"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="4"
+      
+        track-metadata-eventdetail="Smart Lock for Passwords on Android"
+      
+    >
+    
+        Smart Lock for Passwords on Android
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://developers.google.cn/identity/smartlock-passwords/android/overview"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="5"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="5"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+        Guides
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+    
+      
+    
+  </div>
+  
+  
+    <h1 class="devsite-page-title">Enable automatic sign-in across apps and websites</h1>
+  
+  
+  <devsite-toc class="devsite-nav"
+               depth="2"
+               devsite-toc-embedded
+               >
+  </devsite-toc>
+
+  
+
+  <div class="devsite-article-body clearfix
+    ">
+
+    
+      
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>If your app that uses Smart Lock for Passwords shares a user database with your
+website&mdash;or if your app and website use federated sign-in providers such
+as Google Sign-In&mdash;you can associate the app with the website so that
+users save their credentials once and then automatically sign in to both the
+app and the website.</p>
+
+<p>To associate an app with a website, declare associations by hosting a
+<a href="/digital-asset-links">Digital Asset Links</a> JSON file on your website, and
+adding a link to the Digital Asset Link file to your app&#39;s manifest.</p>
+
+<p>By hosting a Digital Asset Links declaration on your website, you also enable
+your website to share <a href="https://developer.android.google.cn/guide/topics/text/autofill.html">autofill</a>
+data with your app when running on Android 8.0 and newer.</p>
+
+<h2 id="prerequisites" data-text="Prerequisites">Prerequisites</h2>
+
+<p>Your website&#39;s sign-in domain must be available through HTTPS.</p>
+
+<h2 id="associate_your_app_with_your_website" data-text="Associate your app with your website">Associate your app with your website</h2>
+
+<ol>
+<li><p>Create a <a href="/digital-asset-links">Digital Asset Links</a> JSON file.</p>
+
+<p>For example, to declare that the website <code translate="no" dir="ltr">https://signin.example.com</code> and
+an Android app with the package name <code translate="no" dir="ltr">com.example</code> can share sign-in
+credentials, create a file named <code translate="no" dir="ltr">assetlinks.json</code> with the following
+content:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">[{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;web&#34;,
+    &#34;site&#34;: &#34;https://signin.example.com&#34;
+  }
+ },
+ {
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;android_app&#34;,
+    &#34;package_name&#34;: &#34;com.example&#34;,
+    &#34;sha256_cert_fingerprints&#34;: [
+      &#34;F2:52:4D:82:E7:1E:68:AF:8C:BC:EA:B0:A2:83:C8:FE:82:51:CF:63:09:6A:4C:64:AE:F4:43:27:20:40:D2:4B&#34;
+    ]
+  }
+ }]
+</code></pre>
+<p>The <code translate="no" dir="ltr">relation</code> field is an array of one or more strings that describe the
+relationship being declared. To declare that apps and sites share sign-in
+credentials, specify the string
+<code translate="no" dir="ltr">delegate_permission/common.get_login_creds</code>.</p>
+
+<p>The <code translate="no" dir="ltr">target</code> field is an object that specifies the asset the declaration
+applies to. The following fields identify a website:</p>
+
+<table class="responsive">
+  <tr>
+    <td><code translate="no" dir="ltr">namespace</code></td>
+    <td><code translate="no" dir="ltr">web</code></td>
+  </tr>
+  <tr>
+    <td><code translate="no" dir="ltr">site</code></td>
+    <td><p>The website's URL, in the format
+      <code translate="no" dir="ltr">https://<var translate="no">domain</var>[:<var translate="no">optional_port</var>]</code>; for 
+      example, <code translate="no" dir="ltr">https://www.example.com</code>.</p>
+      <p>The <var translate="no">domain</var> must be fully-qualified., and 
+      <var translate="no">optional_port</var> must be omitted when using port 443 for 
+      HTTPS.</p>
+      <p>A <code translate="no" dir="ltr">site</code> target can only be a root domain: you cannot
+      limit an app association to a specific subdirectory. Do not include a 
+      path in the URL, such as a trailing slash.</p>
+      <p>Subdomains are not considered to match: that is, if you specify the
+      <var translate="no">domain</var> as <code translate="no" dir="ltr">www.example.com</code>, the domain
+      <code translate="no" dir="ltr">www.counter.example.com</code> is not associated with your app.
+      </p>
+    </td>
+  </tr>
+</table>
+
+<p>The following fields identify an Android app:</p>
+
+<table class="responsive">
+  <tr>
+    <td><code translate="no" dir="ltr">namespace</code></td>
+    <td><code translate="no" dir="ltr">android_app</code></td>
+  </tr>
+  <tr>
+    <td><code translate="no" dir="ltr">package_name</code></td>
+    <td>The package name declared in the app's manifest. For example,
+      <code translate="no" dir="ltr">com.example.android</code></td>
+  </tr>
+  <tr>
+    <td><code translate="no" dir="ltr">sha256_cert_fingerprints</code></td>
+    <td>The SHA256 fingerprints of your app’s signing certificate. You can
+      use the following command to generate the fingerprint:
+      <pre translate="no" dir="ltr">$ keytool -list -v -keystore my-release-key.keystore</pre></td>
+  </tr>
+</table>
+
+<p>See the <a href="/digital-asset-links/v1/statements">Digital Asset Links reference</a>
+for details.</p></li>
+<li><p>Host the Digital Assets Link JSON file at the following location on the
+sign-in domain:
+<pre translate="no" dir="ltr">https://<var translate="no">domain</var>[:<var translate="no">optional_port</var>]/.well-known/assetlinks.json</pre></p>
+
+<p>For example, if your sign-in domain is <code translate="no" dir="ltr">signin.example.com</code>, host the JSON
+file at <code translate="no" dir="ltr">https://signin.example.com/.well-known/assetlinks.json</code>.</p>
+
+<p>The MIME type for the Digital Assets Link file needs to be JSON. Make sure
+the server sends a <code translate="no" dir="ltr">Content-Type: application/json</code> header in the response.</p></li>
+<li><p>Ensure that your host permits Google to retrieve your Digital Asset Link
+file. If you have a <code translate="no" dir="ltr">robots.txt</code> file, it must allow the Googlebot agent to
+retrieve <code translate="no" dir="ltr">/.well-known/assetlinks.json</code>. Most sites can simply allow any
+automated agent to retrieve files in the <code translate="no" dir="ltr">/.well-known/</code> path so that other
+services can access the metadata in those files:
+<pre translate="no" dir="ltr">
+User-agent: *
+Allow: /.well-known/
+</pre></p></li>
+<li><p>Declare the association in the Android app.</p>
+
+<ol>
+<li><p>Add the following line to the manifest file under <code translate="no" dir="ltr">&lt;application&gt;</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">  &lt;meta-data android:name=&#34;asset_statements&#34; android:resource=&#34;@string/asset_statements&#34; /&gt;
+</code></pre></li>
+<li><p>Add an <code translate="no" dir="ltr">asset_statements</code> string resource to the <code translate="no" dir="ltr">strings.xml</code> file.
+  The <code translate="no" dir="ltr">asset_statements</code> string is a JSON object that specifies the
+  <code translate="no" dir="ltr">assetlinks.json</code> files to load. You must escape any apostrophes and
+  quotation marks you use in the string. For example:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">  &lt;string name=&#34;asset_statements&#34; translatable=&#34;false&#34;&gt;
+  [{
+    \&#34;include\&#34;: \&#34;https://signin.example.com/.well-known/assetlinks.json\&#34;
+  }]
+  &lt;/string&gt;
+</code></pre><aside class="note"><strong>Note:</strong><span> the <code translate="no" dir="ltr">https://signin.example.com/.well-known/assetlinks.json</code>
+  link must return a 200 HTTP response with a JSON MIME Content-Type
+  header. Returning a 301/302 HTTP redirect or a non-JSON Content-Type
+  will cause verification to fail. The following is an example showing
+  a request and the related response headers.</span></aside><pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">  &gt; GET /.well-known/assetlinks.json HTTP/1.1
+  &gt; User-Agent: curl/7.35.0
+  &gt; Host: signin.example.com
+
+  &lt; HTTP/1.1 200 OK
+  &lt; Content-Type: application/json
+</code></pre></li>
+</ol></li>
+<li><p>Publish the app to Google Play Store. It needs to be released in the public
+channel for associations to be picked up.</p></li>
+<li><p>(Optional) Complete and submit the
+<a href="https://docs.google.com/forms/d/1UFsC7aMT5IT02PH9Hpbq0vvGJycShlUAKVp8s0QGb9w/viewform"
+  class="gc-analytics-event" data-category="Smart Lock affiliation form link">
+Smart Lock for Passwords affiliation form</a> to indicate that you went
+through the process. Google periodically checks whether affiliations
+submitted through the form actually work and might contact you in case of
+problems.</p></li>
+</ol>
+
+<p>When verification has completed, users of your app can save their credentials on
+either your app or your website and be automatically signed in to both.</p>
+<aside class="note"><strong>Note:</strong><span> When there are multiple APKs for an app only the statements in the
+<a href="http://developer.android.google.cn/guide/topics/manifest/manifest-element.html#vcode">newest version</a>
+of the APK are used to associate apps and websites for sharing stored credentials.</span></aside>
+<h2 id="example_associate_multiple_apps_with_a_website" data-text="Example: Associate multiple apps with a website">Example: Associate multiple apps with a website</h2>
+
+<p>You can associate multiple apps with a website by specifying each app in the
+Digital Assets Link file. For example, to associate the <code translate="no" dir="ltr">com.example</code> and
+<code translate="no" dir="ltr">com.example.pro</code> apps with the site at <code translate="no" dir="ltr">https://signin.example.com/</code>, specify
+both apps in the JSON file hosted at
+<code translate="no" dir="ltr">https://signin.example.com/.well-known/assetlinks.json</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">[{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;web&#34;,
+    &#34;site&#34;: &#34;https://signin.example.com&#34;
+  }
+},{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;android_app&#34;,
+    &#34;package_name&#34;: &#34;com.example&#34;,
+    &#34;sha256_cert_fingerprints&#34;: [
+&#34;F2:52:4D:82:E7:1E:68:AF:8C:BC:EA:B0:A2:83:C8:FE:82:51:CF:63:09:6A:4C:64:AE:F4:43:27:20:40:D2:4B&#34;
+    ]
+  }
+},{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;android_app&#34;,
+    &#34;package_name&#34;: &#34;com.example.pro&#34;,
+    &#34;sha256_cert_fingerprints&#34;: [
+&#34;F2:52:4D:82:E7:1E:68:AF:8C:BC:EA:B0:A2:83:C8:FE:82:51:CF:63:09:6A:4C:64:AE:F4:43:27:20:40:D2:4B&#34;
+    ]
+  }
+}]
+</code></pre>
+<p>Then, declare the association in both apps:</p>
+
+<ol>
+<li><p>Add the following line to the manifest file under <code translate="no" dir="ltr">&lt;application&gt;</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;meta-data android:name=&#34;asset_statements&#34; android:resource=&#34;@string/asset_statements&#34; /&gt;
+</code></pre></li>
+<li><p>Add the following string resource to the <code translate="no" dir="ltr">strings.xml</code> file:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;string name=&#34;asset_statements&#34; translatable=&#34;false&#34;&gt;
+[{
+  \&#34;include\&#34;: \&#34;https://signin.example.com/.well-known/assetlinks.json\&#34;
+}]
+&lt;/string&gt;
+</code></pre></li>
+</ol>
+
+<h2 id="example_associate_apps_with_multiple_websites" data-text="Example: Associate apps with multiple websites">Example: Associate apps with multiple websites</h2>
+
+<p>You can associate apps with multiple websites by specifying each website in the
+Digital Assets Link file and hosting the file on each website. For example, to
+associate the <code translate="no" dir="ltr">com.example</code> and <code translate="no" dir="ltr">com.example.pro</code> apps with the site at
+<code translate="no" dir="ltr">https://signin.example.com/</code> and <code translate="no" dir="ltr">https://m.example.com/</code>, specify
+both apps and both sites in the JSON file hosted at
+<code translate="no" dir="ltr">https://signin.example.com/.well-known/assetlinks.json</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">[{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;web&#34;,
+    &#34;site&#34;: &#34;https://signin.example.com&#34;
+  }
+},{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;web&#34;,
+    &#34;site&#34;: &#34;https://m.example.com&#34;
+  },
+},{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;android_app&#34;,
+    &#34;package_name&#34;: &#34;com.example&#34;,
+    &#34;sha256_cert_fingerprints&#34;: [
+&#34;F2:52:4D:82:E7:1E:68:AF:8C:BC:EA:B0:A2:83:C8:FE:82:51:CF:63:09:6A:4C:64:AE:F4:43:27:20:40:D2:4B&#34;
+    ]
+  }
+},{
+  &#34;relation&#34;: [&#34;delegate_permission/common.get_login_creds&#34;],
+  &#34;target&#34;: {
+    &#34;namespace&#34;: &#34;android_app&#34;,
+    &#34;package_name&#34;: &#34;com.example.pro&#34;,
+    &#34;sha256_cert_fingerprints&#34;: [
+&#34;F2:52:4D:82:E7:1E:68:AF:8C:BC:EA:B0:A2:83:C8:FE:82:51:CF:63:09:6A:4C:64:AE:F4:43:27:20:40:D2:4B&#34;
+    ]
+  }
+}]
+</code></pre>
+<p>Then, in the JSON file hosted at
+<code translate="no" dir="ltr">https://m.example.com/.well-known/assetlinks.json</code>, include the primary Digital
+Asset Links file:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">[{
+  &#34;include&#34;: &#34;https://signin.example.com/.well-known/assetlinks.json&#34;
+}]
+</code></pre>
+<p>Finally, declare the association in both apps:</p>
+
+<ol>
+<li><p>Add the following line to the manifest file under <code translate="no" dir="ltr">&lt;application&gt;</code>:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;meta-data android:name=&#34;asset_statements&#34; android:resource=&#34;@string/asset_statements&#34; /&gt;
+</code></pre></li>
+<li><p>Add the following string resource to the <code translate="no" dir="ltr">strings.xml</code> file:</p>
+<pre class="prettyprint" translate="no" dir="ltr"><code translate="no" dir="ltr">&lt;string name=&#34;asset_statements&#34; translatable=&#34;false&#34;&gt;
+[{
+  \&#34;include\&#34;: \&#34;https://signin.example.com/.well-known/assetlinks.json\&#34;
+}]
+&lt;/string&gt;
+</code></pre></li>
+</ol>
+
+    
+
+    
+  </div>
+
+  
+
+  
+    
+    
+      
+       
+    
+    
+  
+
+  
+  
+</article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.cn/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  <p>Last updated 2020-07-28 UTC.</p>
+</devsite-content-footer>
+
+
+<devsite-notification
+>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  <template class="devsite-thumb-rating-down-categories">
+  []
+  </template>
+  <template class="devsite-thumb-rating-up-categories">
+  []
+  </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+
+<nav class="devsite-footer-promos nocontent" aria-label="Promotions">
+  <ul class="devsite-footer-promos-list">
+    
+    <li class="devsite-footer-promo">
+      <a href="//github.com/googlesamples/android-credentials"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 1)"
+       
+       >
+        
+        
+          
+            <img class="devsite-footer-promo-icon"
+                 src="/site-assets/logo-github.svg"
+                 loading="lazy"
+                 alt="GitHub">
+          
+        
+        GitHub
+      </a>
+      <div class="devsite-footer-promo-description">Fork our samples and try them yourself</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="//stackoverflow.com/questions/tagged/google-smartlockpasswords"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 2)"
+       
+       >
+        
+        
+          
+            <img class="devsite-footer-promo-icon"
+                 src="/site-assets/logo-stack-overflow.svg"
+                 loading="lazy"
+                 alt="Stack Overflow">
+          
+        
+        Stack Overflow
+      </a>
+      <div class="devsite-footer-promo-description">Ask a question under the google-smartlockpasswords tag</div>
+    </li>
+    
+    <li class="devsite-footer-promo">
+      <a href="//googledevelopers.blogspot.com/search/label/Smart%20Lock%20for%20Passwords"
+         class="devsite-footer-promo-title gc-analytics-event"
+         data-category="Site-Wide Custom Events"
+       
+         
+         data-label="Footer Promo Link (index 3)"
+       
+       >
+        
+        
+          
+            <img class="devsite-footer-promo-icon"
+                 src="/site-assets/developers_64dp.png"
+                 loading="lazy"
+                 alt="Blog">
+          
+        
+        Blog
+      </a>
+      <div class="devsite-footer-promo-description">The latest news on the Google Developers blog</div>
+    </li>
+    
+  </ul>
+</nav>
+
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Footer links">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Product Info</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/terms"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+          
+            Terms of Service
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/identity/branding-guidelines"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+          
+            Branding Guidelines
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Help</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//support.google.com/accounts/answer/6197437"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+          
+            Smart Lock for Passwords Help Center
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//stackoverflow.com/questions/tagged/google-smartlockpasswords"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+          
+            Smart Lock for Passwords
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//stackoverflow.com/questions/tagged/google-identity"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+          
+            Google Identity
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Developer consoles</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.developers.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+          
+            Google API Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.cloud.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+          
+            Google Cloud Platform Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//play.google.com/apps/publish"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+          
+            Google Play Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.firebase.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+          
+            Firebase Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//console.actions.google.com"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 5)"
+            >
+          
+            Actions on Google Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//cast.google.com/publish"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 6)"
+            >
+          
+            Cast SDK Developer Console
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="//chrome.google.com/webstore/developer/dashboard"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 7)"
+            >
+          
+            Chrome Web Store Dashboard
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+  
+  <nav class="devsite-footer-sites" aria-label="Other Google Developers websites">
+    <a href="https://developers.google.cn/"
+       class="devsite-footer-sites-logo-link gc-analytics-event"
+       data-category="Site-Wide Custom Events"
+       data-label="Footer Google Developers Link">
+      <img class="devsite-footer-sites-logo"
+           src="https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/images/lockup-developers.svg"
+           loading="lazy"
+           alt="Google Developers">
+    </a>
+    <ul class="devsite-footer-sites-list">
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//developer.android.google.cn"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Android Link"
+         
+         >
+          Android
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//developer.chrome.com/home"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Chrome Link"
+         
+         >
+          Chrome
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//firebase.google.cn"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Firebase Link"
+         
+         >
+          Firebase
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="//cloud.google.com"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer Google Cloud Platform Link"
+         
+         >
+          Google Cloud Platform
+        </a>
+      </li>
+      
+      <li class="devsite-footer-sites-item">
+        <a href="/products"
+           class="devsite-footer-sites-link
+                  gc-analytics-event"
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Footer All products Link"
+         
+         >
+          All products
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Utility links">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="/terms/site-terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Terms link"
+         >
+          Terms
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//policies.google.cn/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link"
+         >
+          Privacy
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <span>ICP证合字B2-20070004号</span>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 devsite-footer-utility-button">
+        
+        <span class="devsite-footer-utility-description">Sign up for the Google Developers newsletter</span>
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//services.google.com/fb/forms/googledevelopersnewsletter/?utm_medium=referral&amp;utm_source=google-products&amp;utm_team=googledevs&amp;utm_campaign=201611-newsletter-launch"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Subscribe link"
+         >
+          Subscribe
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+    
+<devsite-language-selector>
+  <devsite-select class="devsite-language-selector-menu">
+    
+    <select aria-label="Select your language preference."
+            class="devsite-language-selector-select"
+            name="language"
+            track-name="click"
+            track-type="languageSelector">
+    
+      
+      <option>Language</option>
+    
+    
+      <option value="en"
+              lang="en"
+            >
+        English
+      </option>
+    
+      <option value="id"
+              lang="id"
+            >
+        Bahasa Indonesia
+      </option>
+    
+      <option value="de"
+              lang="de"
+            >
+        Deutsch
+      </option>
+    
+      <option value="es"
+              lang="es"
+            >
+        Español
+      </option>
+    
+      <option value="es_419"
+              lang="es_419"
+            >
+        Español – América Latina
+      </option>
+    
+      <option value="fr"
+              lang="fr"
+            >
+        Français
+      </option>
+    
+      <option value="it"
+              lang="it"
+            >
+        Italiano
+      </option>
+    
+      <option value="pl"
+              lang="pl"
+            >
+        Polski
+      </option>
+    
+      <option value="pt_br"
+              lang="pt_br"
+            >
+        Português – Brasil
+      </option>
+    
+      <option value="vi"
+              lang="vi"
+            >
+        Tiếng Việt
+      </option>
+    
+      <option value="tr"
+              lang="tr"
+            >
+        Türkçe
+      </option>
+    
+      <option value="ru"
+              lang="ru"
+            >
+        Русский
+      </option>
+    
+      <option value="he"
+              lang="he"
+            >
+        עברית
+      </option>
+    
+      <option value="ar"
+              lang="ar"
+            >
+        العربيّة
+      </option>
+    
+      <option value="fa"
+              lang="fa"
+            >
+        فارسی
+      </option>
+    
+      <option value="hi"
+              lang="hi"
+            >
+        हिंदी
+      </option>
+    
+      <option value="bn"
+              lang="bn"
+            >
+        বাংলা
+      </option>
+    
+      <option value="th"
+              lang="th"
+            >
+        ภาษาไทย
+      </option>
+    
+      <option value="zh_cn"
+              lang="zh_cn"
+            >
+        中文 – 简体
+      </option>
+    
+      <option value="zh_tw"
+              lang="zh_tw"
+            >
+        中文 – 繁體
+      </option>
+    
+      <option value="ja"
+              lang="ja"
+            >
+        日本語
+      </option>
+    
+      <option value="ko"
+              lang="ko"
+            >
+        한국어
+      </option>
+    
+    </select>
+  </devsite-select>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel></devsite-panel>
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar
+    
+    >
+</devsite-snackbar>
+    <devsite-tooltip blocked-link></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics analytics-iframe>
+      
+        <script type="application/json" analytics>[{"dimensions": {"dimension9": false, "dimension3": false, "dimension6": "en", "dimension1": "Signed out", "dimension4": "Smart Lock for Passwords on Android", "dimension5": "en"}, "gaid": "UA-24532603-11", "metrics": {}}]</script>
+<script type="application/json" gtm>{"parameters": {"freeTrialEligibleUser": "True", "internalUser": "False", "language": {"machineTranslated": "False", "requested": "en", "served": "en"}, "pageType": "article", "projectName": "Smart Lock for Passwords on Android", "signedIn": "False", "tenant": "developers_china", "recommendations": {"sourcePage": "", "sourceType": 0, "sourceRank": 0, "sourceIdenticalDescriptions": 0, "sourceTitleWords": 0, "sourceDescriptionWords": 0, "experiment": ""}}, "tags": []}</script>
+      
+    </devsite-analytics>
+    
+    
+    <script nonce="I4yHiLeG2hNMQc+hAk4b0z3RlPE0oH">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/js/app_loader.js', '[20,"en",null,"/js/devsite_app_module.js","https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8","https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers","https://google-developers.gonglchuangl.net",null,null,["/_pwa/developers/manifest.json","https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/images/video-placeholder.svg","https://www.gstatic.cn/devrel-devsite/prod/vb4b5f40392bd9ba34d31c8578d2b4bd0a5bd852eabd9554190f5a24f31b598a8/developers/images/favicon.png","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,18,21,25,40,50,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,111,112,113,115,117,118,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,140,141,144,147,148,149,150,151,152,153,154,155,156,157,159,161,163,164,165,168,169,170,173,179,182,186,191],"AIzaSyAP-jjEJBzmIyKR4F-3XITp8yM9T1gEEI8","AIzaSyB6xiKGDR5O3Ak2okS4rLkauxGUG7XP0hg","developers.google.cn","AIzaSyAQk0fBONSGUqCNznf6Krs82Ap1-NV6J4o","AIzaSyCCxcqdrZ_7QMeLCRY20bh_SXdAYqy70KY"]')
+  
+</script>
+    <devsite-a11y-announce></devsite-a11y-announce>
+  </body>
+</html>
